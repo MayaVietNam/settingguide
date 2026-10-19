@@ -6,7 +6,7 @@
   /* ---------- translations ---------- */
   var T = {
     ja: {
-      nav_home: "ホーム", nav_guide: "設定", nav_dev: "対応端末", nav_use: "データ確認",
+      nav_home: "ホーム", nav_guide: "設定", nav_dev: "対応端末", nav_use: "データ確認", tb_guide: "設定", tb_dev: "対応端末", tb_use: "データ確認",
       btn_support: "Zalo公式アカウントを追加", btn_plans: "プランを見る",
       home_h1: "eSIMを設定する", home_sub: "購入後はここから。手順どおりに進めるだけです。", home_pick: "お使いのスマホは？",
       row_guide_t: "設定ガイド", row_guide_s: "iPhoneとAndroidの手順", row_dev_t: "対応端末", row_dev_s: "お使いの機種を検索", row_use_t: "データ確認", row_use_s: "残りのデータ量をチェック",
@@ -19,20 +19,20 @@
       use_h1: "データ残量の確認", use_reset: "渡航前に統計をリセット。他の回線との合算を防げます。", use_q1: "残量が実際と合わない", use_a1: "反映に数分かかることがあります。少し待ってから確認を。", use_q2: "「データ使用量」が見つからない", use_a2: "機種により名称が異なります。見つからなければサポートへ。", use_top: "追加チャージはプランにより異なります。サポートへ。"
     },
     en: {
-      nav_home: "Home", nav_guide: "Setup", nav_dev: "Phones", nav_use: "Data",
+      nav_home: "Home", nav_guide: "eSIM Set up", nav_dev: "Support eSIM Phones", nav_use: "Check data usage", tb_guide: "Setup", tb_dev: "Phones", tb_use: "Data",
       btn_support: "Add Zalo Official Account", btn_plans: "View plans",
       home_h1: "Set up your eSIM", home_sub: "Start here after you buy. Just follow the steps.", home_pick: "Which phone do you have?",
-      row_guide_t: "Setup guide", row_guide_s: "Steps for iPhone and Android", row_dev_t: "Supported phones", row_dev_s: "Search your model", row_use_t: "Check your data usage", row_use_s: "See what's left",
+      row_guide_t: "Setup guide", row_guide_s: "Steps for iPhone and Android", row_dev_t: "eSIM Support Phones", row_dev_s: "Search your model", row_use_t: "Check your data usage", row_use_s: "See what's left",
       help_t: "Any questions?", help_s: "Have your order number ready.",
       guide_h1: "eSIM setup steps", wifi: "Connect to Wi-Fi first.", keep_open: "Keep this screen open.", r_h: "If it's off, you won't connect.",
       i1: "Tap “iOS users” under the QR code", i2: "Tap “Continue”", i3: "Wait for the install to finish", i4: "Pick a label (e.g. Travel)", i5: "Choose Travel for mobile data", i6: "Turn on Data Roaming",
       a1: "Tap “Android users” under the QR code", a2: "Tap “Add”", a3: "Wait for the download", a4: "Check the eSIM is on", a5: "Choose the eSIM for mobile data", a6: "Turn on Data Roaming",
       done_t: "You're all set", done_s: "Not connecting? Message us on Zalo.",
-      dev_h1: "Supported phones", dev_ph: "Search your phone (e.g. iPhone 15)", dev_ok: "Supported", dev_no: "Not on the list. If Settings shows “Add eSIM”, it works.", dev_lock: "Your phone must be SIM-unlocked. Ask your carrier before you buy.", dev_all: "Partial list, updated regularly", dev_other: "Others",
+      dev_h1: "eSIM Support Phones", dev_ph: "Search your phone (e.g. iPhone 15)", dev_ok: "Supported", dev_no: "Not on the list. If Settings shows “Add eSIM”, it works.", dev_lock: "Your phone must be SIM-unlocked. Ask your carrier before you buy.", dev_all: "Partial list, updated regularly", dev_other: "Others",
       use_h1: "Check your data usage", use_reset: "Before your trip, reset the statistics so other lines aren't added in.", use_q1: "The number looks wrong", use_a1: "It can take a few minutes to update. Wait a moment and check again.", use_q2: "I can't find “Data usage”", use_a2: "The name varies by phone. If you can't find it, contact support.", use_top: "Top-up depends on your plan. Ask support."
     },
     vi: {
-      nav_home: "Trang chủ", nav_guide: "Cài đặt", nav_dev: "Máy hỗ trợ", nav_use: "Dữ liệu",
+      nav_home: "Trang chủ", nav_guide: "Cài đặt", nav_dev: "Máy hỗ trợ", nav_use: "Dữ liệu", tb_guide: "Cài đặt", tb_dev: "Máy hỗ trợ", tb_use: "Dữ liệu",
       btn_support: "Thêm Zalo Official Account", btn_plans: "Xem gói cước",
       home_h1: "Cài đặt eSIM", home_sub: "Bắt đầu từ đây sau khi mua. Chỉ cần làm theo từng bước.", home_pick: "Bạn dùng điện thoại nào?",
       row_guide_t: "Hướng dẫn cài đặt", row_guide_s: "Các bước cho iPhone và Android", row_dev_t: "Máy hỗ trợ", row_dev_s: "Tìm máy của bạn", row_use_t: "Kiểm tra dữ liệu", row_use_s: "Xem dung lượng còn lại",
@@ -45,7 +45,7 @@
       use_h1: "Kiểm tra dữ liệu còn lại", use_reset: "Trước chuyến đi, hãy đặt lại thống kê để không bị cộng gộp với SIM khác.", use_q1: "Số liệu không khớp thực tế", use_a1: "Có thể chậm vài phút. Hãy chờ rồi kiểm tra lại.", use_q2: "Không thấy “Data usage”", use_a2: "Tên mục khác nhau tùy máy. Không tìm thấy thì liên hệ hỗ trợ.", use_top: "Khả năng nạp thêm tùy theo gói. Hãy hỏi hỗ trợ."
     },
     id: {
-      nav_home: "Beranda", nav_guide: "Setup", nav_dev: "Perangkat", nav_use: "Kuota",
+      nav_home: "Beranda", nav_guide: "Setup", nav_dev: "Perangkat", nav_use: "Kuota", tb_guide: "Setup", tb_dev: "Perangkat", tb_use: "Kuota",
       btn_support: "Tambah Zalo Official Account", btn_plans: "Lihat paket",
       home_h1: "Atur eSIM Anda", home_sub: "Mulai dari sini setelah membeli. Cukup ikuti langkahnya.", home_pick: "Pakai ponsel apa?",
       row_guide_t: "Panduan setup", row_guide_s: "Langkah untuk iPhone dan Android", row_dev_t: "Perangkat", row_dev_s: "Cari ponsel Anda", row_use_t: "Cek kuota", row_use_s: "Lihat sisa data",
@@ -58,7 +58,7 @@
       use_h1: "Cek sisa kuota", use_reset: "Sebelum berangkat, reset statistik agar tidak tercampur dengan jalur lain.", use_q1: "Sisa kuota tidak sesuai", use_a1: "Pembaruan bisa tertunda beberapa menit. Tunggu lalu cek lagi.", use_q2: "Menu “Data usage” tidak ketemu", use_a2: "Nama menu beda tiap perangkat. Jika tidak ketemu, hubungi support.", use_top: "Top-up tergantung paket Anda. Tanyakan ke support."
     },
     zh: {
-      nav_home: "首頁", nav_guide: "設定", nav_dev: "支援機型", nav_use: "流量查詢",
+      nav_home: "首頁", nav_guide: "設定", nav_dev: "支援機型", nav_use: "流量查詢", tb_guide: "設定", tb_dev: "支援機型", tb_use: "流量查詢",
       btn_support: "加入 Zalo 官方帳號", btn_plans: "查看方案",
       home_h1: "設定你的 eSIM", home_sub: "購買後從這裡開始，照著步驟做就好。", home_pick: "你用哪種手機？",
       row_guide_t: "設定教學", row_guide_s: "iPhone 與 Android 步驟", row_dev_t: "支援機型", row_dev_s: "搜尋你的手機", row_use_t: "流量查詢", row_use_s: "查看剩餘流量",
@@ -71,7 +71,7 @@
       use_h1: "查詢剩餘流量", use_reset: "出發前請重設統計，避免與其他門號合併計算。", use_q1: "剩餘流量與實際不符", use_a1: "更新可能延遲數分鐘，請稍後再查看。", use_q2: "找不到「數據用量」", use_a2: "名稱依機型而異，找不到請聯絡客服。", use_top: "是否可加購依方案而定，請洽客服。"
     },
     ko: {
-      nav_home: "홈", nav_guide: "설정", nav_dev: "지원 기기", nav_use: "데이터",
+      nav_home: "홈", nav_guide: "설정", nav_dev: "지원 기기", nav_use: "데이터", tb_guide: "설정", tb_dev: "지원 기기", tb_use: "데이터",
       btn_support: "Zalo 공식 계정 추가", btn_plans: "요금제 보기",
       home_h1: "eSIM 설정하기", home_sub: "구매 후 여기서 시작하세요. 순서대로 따라 하면 됩니다.", home_pick: "어떤 스마트폰을 쓰시나요?",
       row_guide_t: "설정 가이드", row_guide_s: "iPhone·Android 설치 방법", row_dev_t: "지원 기기", row_dev_s: "내 폰 검색", row_use_t: "데이터 확인", row_use_s: "남은 데이터 보기",
@@ -169,16 +169,13 @@
     var q = (location.search.match(/[?&]lang=(\w+)/) || [])[1];
     if (q && T[q]) return q;
     try { var s = localStorage.getItem("ez_lang"); if (s && T[s]) return s; } catch (e) {}
-    var n = (navigator.language || "en").toLowerCase();
-    if (n.indexOf("zh") === 0) return "zh";
-    if (n.indexOf("in") === 0) return "id";
-    var b = n.slice(0, 2);
-    return T[b] ? b : "en";
+    var df = (cfg && cfg.defaultLang) || "vi";
+    return T[df] ? df : "en";
   }
 
   /* ---------- shared chrome ---------- */
   var page = document.body.dataset.page;
-  var NAV = [["index.html", "home", "nav_home", I.home], ["guide.html", "guide", "nav_guide", I.steps], ["devices.html", "dev", "nav_dev", I.phone], ["usage.html", "use", "nav_use", I.chart]];
+  var NAV = [["index.html", "home", "nav_home", I.home, "nav_home"], ["guide.html", "guide", "nav_guide", I.steps, "tb_guide"], ["devices.html", "dev", "nav_dev", I.phone, "tb_dev"], ["usage.html", "use", "nav_use", I.chart, "tb_use"]];
 
   function chrome() {
     var h = '<div class="wrap"><a class="logo" href="index.html"><img src="assets/img/logo-color.png" alt="ez eSIM"></a><nav class="dnav" aria-label="Main">';
@@ -192,7 +189,7 @@
     $("#hdr").innerHTML = h;
 
     var tb = "";
-    NAV.forEach(function (n) { tb += '<a href="' + n[0] + '"' + (page === n[1] ? ' aria-current="page"' : "") + ">" + n[3] + '<span data-i18n="' + n[2] + '"></span></a>'; });
+    NAV.forEach(function (n) { tb += '<a href="' + n[0] + '"' + (page === n[1] ? ' aria-current="page"' : "") + ">" + n[3] + '<span data-i18n="' + n[4] + '"></span></a>'; });
     $("#tabbar").innerHTML = tb;
 
     $("#ftr").innerHTML = '<div class="wrap"><img src="assets/img/logo-white.png" alt="ez eSIM"><span>© ' + new Date().getFullYear() + " ez eSIM</span></div>";
