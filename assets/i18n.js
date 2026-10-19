@@ -1,0 +1,361 @@
+/* ez eSIM support site — i18n, shared chrome, page modules. 6 languages: ja en vi id zh(繁體) ko */
+(function () {
+  "use strict";
+  var cfg = window.EZ || {};
+
+  /* ---------- translations ---------- */
+  var T = {
+    ja: {
+      nav_home: "ホーム", nav_guide: "設定", nav_dev: "対応端末", nav_use: "データ確認",
+      btn_support: "Zalo公式アカウントを追加", btn_plans: "プランを見る",
+      home_h1: "eSIMを設定する", home_sub: "購入後はここから。手順どおりに進めるだけです。", home_pick: "お使いのスマホは？",
+      row_guide_t: "設定ガイド", row_guide_s: "iPhoneとAndroidの手順", row_dev_t: "対応端末", row_dev_s: "お使いの機種を検索", row_use_t: "データ確認", row_use_s: "残りのデータ量をチェック",
+      help_t: "ご不明な点はありませんか？", help_s: "ご注文番号をご用意のうえご連絡ください。",
+      guide_h1: "eSIMの設定手順", wifi: "先にWi-Fiに接続してください。", keep_open: "画面は閉じないでください。", r_h: "オフのままだと通信できません。",
+      i1: "QRコード下の「iOSユーザー」をタップ", i2: "「続ける」をタップ", i3: "インストール完了まで待つ", i4: "ラベルを選ぶ（例：Travel）", i5: "モバイル通信にTravelを選ぶ", i6: "データローミングをオン",
+      a1: "QRコード下の「Androidユーザー」をタップ", a2: "「追加」をタップ", a3: "ダウンロード中", a4: "eSIMがオンになっていることを確認", a5: "モバイルデータにeSIMを選ぶ", a6: "データローミングをオン",
+      done_t: "これで完了です", done_s: "繋がらないときはZaloでご連絡ください。",
+      dev_h1: "対応端末", dev_ph: "機種名で検索（例：iPhone 15）", dev_ok: "対応しています", dev_no: "一覧にありません。設定に「eSIMを追加」があれば使えます。", dev_lock: "SIMロック解除済みの端末が必要です。購入前にキャリアで確認を。", dev_all: "一部抜粋・随時更新", dev_other: "その他",
+      use_h1: "データ残量の確認", use_reset: "渡航前に統計をリセット。他の回線との合算を防げます。", use_q1: "残量が実際と合わない", use_a1: "反映に数分かかることがあります。少し待ってから確認を。", use_q2: "「データ使用量」が見つからない", use_a2: "機種により名称が異なります。見つからなければサポートへ。", use_top: "追加チャージはプランにより異なります。サポートへ。"
+    },
+    en: {
+      nav_home: "Home", nav_guide: "Setup", nav_dev: "Phones", nav_use: "Data",
+      btn_support: "Add Zalo Official Account", btn_plans: "View plans",
+      home_h1: "Set up your eSIM", home_sub: "Start here after you buy. Just follow the steps.", home_pick: "Which phone do you have?",
+      row_guide_t: "Setup guide", row_guide_s: "Steps for iPhone and Android", row_dev_t: "Supported phones", row_dev_s: "Search your model", row_use_t: "Check your data usage", row_use_s: "See what's left",
+      help_t: "Any questions?", help_s: "Have your order number ready.",
+      guide_h1: "eSIM setup steps", wifi: "Connect to Wi-Fi first.", keep_open: "Keep this screen open.", r_h: "If it's off, you won't connect.",
+      i1: "Tap “iOS users” under the QR code", i2: "Tap “Continue”", i3: "Wait for the install to finish", i4: "Pick a label (e.g. Travel)", i5: "Choose Travel for mobile data", i6: "Turn on Data Roaming",
+      a1: "Tap “Android users” under the QR code", a2: "Tap “Add”", a3: "Wait for the download", a4: "Check the eSIM is on", a5: "Choose the eSIM for mobile data", a6: "Turn on Data Roaming",
+      done_t: "You're all set", done_s: "Not connecting? Message us on Zalo.",
+      dev_h1: "Supported phones", dev_ph: "Search your phone (e.g. iPhone 15)", dev_ok: "Supported", dev_no: "Not on the list. If Settings shows “Add eSIM”, it works.", dev_lock: "Your phone must be SIM-unlocked. Ask your carrier before you buy.", dev_all: "Partial list, updated regularly", dev_other: "Others",
+      use_h1: "Check your data usage", use_reset: "Before your trip, reset the statistics so other lines aren't added in.", use_q1: "The number looks wrong", use_a1: "It can take a few minutes to update. Wait a moment and check again.", use_q2: "I can't find “Data usage”", use_a2: "The name varies by phone. If you can't find it, contact support.", use_top: "Top-up depends on your plan. Ask support."
+    },
+    vi: {
+      nav_home: "Trang chủ", nav_guide: "Cài đặt", nav_dev: "Máy hỗ trợ", nav_use: "Dữ liệu",
+      btn_support: "Thêm Zalo Official Account", btn_plans: "Xem gói cước",
+      home_h1: "Cài đặt eSIM", home_sub: "Bắt đầu từ đây sau khi mua. Chỉ cần làm theo từng bước.", home_pick: "Bạn dùng điện thoại nào?",
+      row_guide_t: "Hướng dẫn cài đặt", row_guide_s: "Các bước cho iPhone và Android", row_dev_t: "Máy hỗ trợ", row_dev_s: "Tìm máy của bạn", row_use_t: "Kiểm tra dữ liệu", row_use_s: "Xem dung lượng còn lại",
+      help_t: "Bạn cần hỗ trợ thêm?", help_s: "Hãy chuẩn bị mã đơn hàng khi liên hệ.",
+      guide_h1: "Các bước cài đặt eSIM", wifi: "Hãy kết nối Wi-Fi trước.", keep_open: "Đừng đóng màn hình.", r_h: "Nếu tắt sẽ không kết nối được.",
+      i1: "Nhấn “iOS users” dưới mã QR", i2: "Nhấn “Tiếp tục”", i3: "Chờ cài đặt hoàn tất", i4: "Chọn nhãn (vd: Travel)", i5: "Chọn Travel cho dữ liệu di động", i6: "Bật Chuyển vùng dữ liệu",
+      a1: "Nhấn “Android users” dưới mã QR", a2: "Nhấn “Thêm”", a3: "Chờ tải xuống", a4: "Kiểm tra eSIM đã bật", a5: "Chọn eSIM cho dữ liệu di động", a6: "Bật Chuyển vùng dữ liệu",
+      done_t: "Xong rồi", done_s: "Chưa kết nối được? Nhắn tin cho chúng tôi qua Zalo.",
+      dev_h1: "Máy hỗ trợ", dev_ph: "Tìm máy (vd: iPhone 15)", dev_ok: "Được hỗ trợ", dev_no: "Không có trong danh sách. Nếu Cài đặt có “Thêm eSIM” thì vẫn dùng được.", dev_lock: "Máy phải được mở khóa SIM. Hãy hỏi nhà mạng trước khi mua.", dev_all: "Danh sách rút gọn, cập nhật thường xuyên", dev_other: "Hãng khác",
+      use_h1: "Kiểm tra dữ liệu còn lại", use_reset: "Trước chuyến đi, hãy đặt lại thống kê để không bị cộng gộp với SIM khác.", use_q1: "Số liệu không khớp thực tế", use_a1: "Có thể chậm vài phút. Hãy chờ rồi kiểm tra lại.", use_q2: "Không thấy “Data usage”", use_a2: "Tên mục khác nhau tùy máy. Không tìm thấy thì liên hệ hỗ trợ.", use_top: "Khả năng nạp thêm tùy theo gói. Hãy hỏi hỗ trợ."
+    },
+    id: {
+      nav_home: "Beranda", nav_guide: "Setup", nav_dev: "Perangkat", nav_use: "Kuota",
+      btn_support: "Tambah Zalo Official Account", btn_plans: "Lihat paket",
+      home_h1: "Atur eSIM Anda", home_sub: "Mulai dari sini setelah membeli. Cukup ikuti langkahnya.", home_pick: "Pakai ponsel apa?",
+      row_guide_t: "Panduan setup", row_guide_s: "Langkah untuk iPhone dan Android", row_dev_t: "Perangkat", row_dev_s: "Cari ponsel Anda", row_use_t: "Cek kuota", row_use_s: "Lihat sisa data",
+      help_t: "Ada pertanyaan?", help_s: "Siapkan nomor pesanan saat menghubungi kami.",
+      guide_h1: "Langkah setup eSIM", wifi: "Sambungkan ke Wi-Fi dulu.", keep_open: "Jangan tutup layar.", r_h: "Jika mati, tidak akan terhubung.",
+      i1: "Ketuk “iOS users” di bawah kode QR", i2: "Ketuk “Lanjutkan”", i3: "Tunggu instalasi selesai", i4: "Pilih label (mis. Travel)", i5: "Pilih Travel untuk data seluler", i6: "Aktifkan Roaming Data",
+      a1: "Ketuk “Android users” di bawah kode QR", a2: "Ketuk “Tambah”", a3: "Tunggu unduhan selesai", a4: "Pastikan eSIM aktif", a5: "Pilih eSIM untuk data seluler", a6: "Aktifkan Roaming Data",
+      done_t: "Selesai", done_s: "Belum terhubung? Hubungi kami lewat Zalo.",
+      dev_h1: "Perangkat yang didukung", dev_ph: "Cari ponsel (mis. iPhone 15)", dev_ok: "Didukung", dev_no: "Tidak ada di daftar. Jika Pengaturan punya “Tambah eSIM”, tetap bisa dipakai.", dev_lock: "Ponsel harus bebas SIM lock. Tanyakan ke operator sebelum membeli.", dev_all: "Daftar sebagian, diperbarui berkala", dev_other: "Lainnya",
+      use_h1: "Cek sisa kuota", use_reset: "Sebelum berangkat, reset statistik agar tidak tercampur dengan jalur lain.", use_q1: "Sisa kuota tidak sesuai", use_a1: "Pembaruan bisa tertunda beberapa menit. Tunggu lalu cek lagi.", use_q2: "Menu “Data usage” tidak ketemu", use_a2: "Nama menu beda tiap perangkat. Jika tidak ketemu, hubungi support.", use_top: "Top-up tergantung paket Anda. Tanyakan ke support."
+    },
+    zh: {
+      nav_home: "首頁", nav_guide: "設定", nav_dev: "支援機型", nav_use: "流量查詢",
+      btn_support: "加入 Zalo 官方帳號", btn_plans: "查看方案",
+      home_h1: "設定你的 eSIM", home_sub: "購買後從這裡開始，照著步驟做就好。", home_pick: "你用哪種手機？",
+      row_guide_t: "設定教學", row_guide_s: "iPhone 與 Android 步驟", row_dev_t: "支援機型", row_dev_s: "搜尋你的手機", row_use_t: "流量查詢", row_use_s: "查看剩餘流量",
+      help_t: "有任何疑問嗎？", help_s: "聯絡時請備妥訂單編號。",
+      guide_h1: "eSIM 設定步驟", wifi: "請先連上 Wi-Fi。", keep_open: "請勿關閉畫面。", r_h: "關閉時無法連線。",
+      i1: "點選 QR 碼下方的「iOS 使用者」", i2: "點選「繼續」", i3: "等待安裝完成", i4: "選擇標籤（例：Travel）", i5: "行動數據選擇 Travel", i6: "開啟數據漫遊",
+      a1: "點選 QR 碼下方的「Android 使用者」", a2: "點選「新增」", a3: "等待下載完成", a4: "確認 eSIM 已開啟", a5: "行動數據選擇此 eSIM", a6: "開啟數據漫遊",
+      done_t: "設定完成", done_s: "連不上嗎？請透過 Zalo 聯絡我們。",
+      dev_h1: "支援機型", dev_ph: "搜尋機型（例：iPhone 15）", dev_ok: "支援", dev_no: "不在清單中。若設定中有「新增 eSIM」即可使用。", dev_lock: "需為已解除 SIM 鎖的手機。購買前請向電信業者確認。", dev_all: "僅列出部分機型，持續更新", dev_other: "其他",
+      use_h1: "查詢剩餘流量", use_reset: "出發前請重設統計，避免與其他門號合併計算。", use_q1: "剩餘流量與實際不符", use_a1: "更新可能延遲數分鐘，請稍後再查看。", use_q2: "找不到「數據用量」", use_a2: "名稱依機型而異，找不到請聯絡客服。", use_top: "是否可加購依方案而定，請洽客服。"
+    },
+    ko: {
+      nav_home: "홈", nav_guide: "설정", nav_dev: "지원 기기", nav_use: "데이터",
+      btn_support: "Zalo 공식 계정 추가", btn_plans: "요금제 보기",
+      home_h1: "eSIM 설정하기", home_sub: "구매 후 여기서 시작하세요. 순서대로 따라 하면 됩니다.", home_pick: "어떤 스마트폰을 쓰시나요?",
+      row_guide_t: "설정 가이드", row_guide_s: "iPhone·Android 설치 방법", row_dev_t: "지원 기기", row_dev_s: "내 폰 검색", row_use_t: "데이터 확인", row_use_s: "남은 데이터 보기",
+      help_t: "궁금한 점이 있으신가요?", help_s: "문의 시 주문번호를 준비해 주세요.",
+      guide_h1: "eSIM 설정 방법", wifi: "먼저 Wi-Fi에 연결하세요.", keep_open: "화면을 닫지 마세요.", r_h: "꺼져 있으면 연결되지 않습니다.",
+      i1: "QR 코드 아래 ‘iOS 사용자’ 탭", i2: "‘계속’ 탭", i3: "설치가 끝날 때까지 대기", i4: "라벨 선택(예: Travel)", i5: "모바일 데이터에 Travel 선택", i6: "데이터 로밍 켜기",
+      a1: "QR 코드 아래 ‘Android 사용자’ 탭", a2: "‘추가’ 탭", a3: "다운로드 대기", a4: "eSIM이 켜져 있는지 확인", a5: "모바일 데이터에 eSIM 선택", a6: "데이터 로밍 켜기",
+      done_t: "설정 완료", done_s: "연결이 안 되나요? Zalo로 문의하세요.",
+      dev_h1: "지원 기기", dev_ph: "기종 검색(예: iPhone 15)", dev_ok: "지원됩니다", dev_no: "목록에 없습니다. 설정에 ‘eSIM 추가’가 있으면 사용할 수 있습니다.", dev_lock: "SIM 잠금이 해제된 기기여야 합니다. 구매 전 통신사에 확인하세요.", dev_all: "일부만 표시, 수시 업데이트", dev_other: "기타",
+      use_h1: "남은 데이터 확인", use_reset: "출국 전에 통계를 초기화하세요. 다른 회선과 합산되는 것을 막아 줍니다.", use_q1: "남은 데이터가 실제와 달라요", use_a1: "반영에 몇 분 걸릴 수 있어요. 잠시 후 다시 확인하세요.", use_q2: "‘데이터 사용량’이 안 보여요", use_a2: "기종마다 이름이 달라요. 찾을 수 없으면 고객센터로 문의하세요.", use_top: "충전 가능 여부는 요금제에 따라 다릅니다. 고객센터에 문의하세요."
+    }
+  };
+  var LANGS = [["ja", "日本語", "ja"], ["en", "English", "en"], ["vi", "Tiếng Việt", "vi"], ["id", "Bahasa Indonesia", "id"], ["zh", "繁體中文", "zh-Hant"], ["ko", "한국어", "ko"]];
+  var lang = "en";
+  var hooks = [];
+
+  /* ---------- icons ---------- */
+  function ic(p) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + "</svg>"; }
+  var I = {
+    apple: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>',
+    android: '<svg viewBox="2.4 0 19.2 23" fill="currentColor" aria-hidden="true"><path d="M6.2 9.5h11.6v8.2a1.3 1.3 0 0 1-1.3 1.3H15v2.3a1.2 1.2 0 0 1-2.4 0V19h-1.2v2.3a1.2 1.2 0 0 1-2.4 0V19H7.5a1.3 1.3 0 0 1-1.3-1.3zM3.6 9.7a1.2 1.2 0 0 1 2.4 0v5.2a1.2 1.2 0 0 1-2.4 0zm14.4 0a1.2 1.2 0 0 1 2.4 0v5.2a1.2 1.2 0 0 1-2.4 0zM6.4 8.5a5.6 5.6 0 0 1 11.2 0zM8.7 3.1l-1.1-1.7a.4.4 0 0 1 .7-.4l1.1 1.7a5.6 5.6 0 0 1 4.2 0L14.7 1a.4.4 0 0 1 .7.4l-1.1 1.7M9.4 6.3a.55.55 0 1 0 0 1.1.55.55 0 0 0 0-1.1zm5.2 0a.55.55 0 1 0 0 1.1.55.55 0 0 0 0-1.1z" fill-rule="evenodd"/></svg>',
+    globe: ic('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 2.6 4 5.6 4 9s-1.2 6.4-4 9c-2.8-2.6-4-5.6-4-9s1.2-6.4 4-9z"/>'),
+    home: ic('<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>'),
+    steps: ic('<path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v3h16v-3"/>'),
+    phone: ic('<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/>'),
+    chart: ic('<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'),
+    chev: ic('<path d="M9 5l7 7-7 7"/>'),
+    search: ic('<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>'),
+    check: ic('<circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/>'),
+    info: ic('<circle cx="12" cy="12" r="10"/><path d="M12 11v6M12 7.5v.5"/>'),
+    wifi: ic('<path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/>'),
+    chat: ic('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>')
+  };
+
+  /* ---------- schematic phone illustrations (language-independent) ---------- */
+  var NAVY = "#002954", RED = "#DE2137", MIST = "#EDF1F7", GREY = "#c3cee0", OK = "#18794e";
+  function frame(inner) {
+    return '<svg viewBox="0 0 120 220" aria-hidden="true"><rect x="3" y="3" width="114" height="214" rx="20" fill="#fff" stroke="' + NAVY + '" stroke-width="3"/><rect x="10" y="10" width="100" height="200" rx="14" fill="' + MIST + '"/><rect x="46" y="15" width="28" height="6" rx="3" fill="' + NAVY + '"/>' + inner + "</svg>";
+  }
+  function rows(n, hl, y0, gap, extra) {
+    var s = "";
+    for (var i = 0; i < n; i++) {
+      var y = y0 + i * gap, on = i === hl;
+      s += '<rect x="16" y="' + y + '" width="88" height="30" rx="9" fill="#fff"' + (on ? ' stroke="' + RED + '" stroke-width="2.5"' : "") + "/>";
+      s += '<rect x="26" y="' + (y + 12) + '" width="' + (on ? 44 : 36) + '" height="5" rx="2.5" fill="' + (on ? NAVY : GREY) + '"/>';
+      if (extra) s += extra(i, y, on);
+    }
+    return s;
+  }
+  var QRBITS = "1011010110101101001011010011010110110";
+  function finder(x, y) {
+    return '<rect x="' + x + '" y="' + y + '" width="22" height="22" rx="3" fill="' + NAVY + '"/><rect x="' + (x + 4) + '" y="' + (y + 4) + '" width="14" height="14" rx="1.5" fill="#fff"/><rect x="' + (x + 7.5) + '" y="' + (y + 7.5) + '" width="7" height="7" rx="1" fill="' + NAVY + '"/>';
+  }
+  function qr() {
+    var s = '<rect x="24" y="40" width="72" height="72" rx="8" fill="#fff"/>', k = 0, x0 = 30, y0 = 46, c = 6;
+    s += finder(x0, y0) + finder(x0 + 36, y0) + finder(x0, y0 + 36);
+    for (var r = 0; r < 10; r++) for (var q = 0; q < 10; q++) {
+      var inF = (r < 4 && q < 4) || (r < 4 && q > 5) || (r > 5 && q < 4);
+      if (inF) continue;
+      if (QRBITS.charAt(k++ % QRBITS.length) === "1") s += '<rect x="' + (x0 + q * c) + '" y="' + (y0 + r * c) + '" width="5" height="5" rx="1" fill="' + NAVY + '"/>';
+    }
+    return s + '<rect x="22" y="128" width="76" height="28" rx="14" fill="' + RED + '"/><rect x="42" y="139" width="36" height="5" rx="2.5" fill="#fff"/>';
+  }
+  var P = {
+    qr: function () { return qr(); },
+    prompt: function () {
+      return '<rect x="16" y="64" width="88" height="88" rx="12" fill="#fff"/><rect x="30" y="80" width="60" height="5" rx="2.5" fill="' + GREY + '"/><rect x="38" y="94" width="44" height="5" rx="2.5" fill="' + GREY + '"/><rect x="16" y="116" width="88" height="1.5" fill="' + MIST + '"/><rect x="26" y="134" width="24" height="5" rx="2.5" fill="' + GREY + '"/><rect x="60" y="126" width="38" height="20" rx="10" fill="' + RED + '"/><rect x="70" y="134" width="18" height="4" rx="2" fill="#fff"/>';
+    },
+    loading: function () {
+      return '<circle cx="60" cy="96" r="22" fill="none" stroke="#cfd8e6" stroke-width="7"/><path d="M60 74a22 22 0 0 1 22 22" fill="none" stroke="' + RED + '" stroke-width="7" stroke-linecap="round"/><rect x="24" y="148" width="72" height="9" rx="4.5" fill="#cfd8e6"/><rect x="24" y="148" width="44" height="9" rx="4.5" fill="' + NAVY + '"/>';
+    },
+    list: function (hl) {
+      return rows(4, hl, 40, 40, function (i, y, on) { return on ? '<circle cx="91" cy="' + (y + 15) + '" r="6" fill="' + RED + '"/><path d="M88 ' + (y + 15) + 'l2 2 4-4" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' : ""; });
+    },
+    toggle: function () {
+      return rows(3, 2, 54, 42, function (i, y, on) {
+        return '<rect x="72" y="' + (y + 8) + '" width="26" height="14" rx="7" fill="' + (on ? OK : "#cfd8e6") + '"/><circle cx="' + (on ? 91 : 79) + '" cy="' + (y + 15) + '" r="5" fill="#fff"/>';
+      });
+    },
+    scan: function () {
+      var c = 'stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"';
+      return '<rect x="16" y="44" width="88" height="124" rx="10" fill="' + NAVY + '"/><path d="M36 76v-10h10M84 66h10v10M94 108v10H84M46 118H36v-10" ' + c + '/><rect x="38" y="91" width="44" height="3" rx="1.5" fill="' + RED + '"/>';
+    },
+    add: function () {
+      return rows(3, -1, 40, 40) + '<rect x="16" y="160" width="88" height="30" rx="9" fill="#fff" stroke="' + RED + '" stroke-width="2.5"/><circle cx="34" cy="175" r="8" fill="' + RED + '"/><path d="M34 171v8M30 175h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><rect x="48" y="172" width="38" height="5" rx="2.5" fill="' + NAVY + '"/>';
+    }
+  };
+  function phone(kind, hl) { return frame(P[kind](hl)); }
+
+  /* ---------- helpers ---------- */
+  function t(k) { return (T[lang] && T[lang][k]) || T.en[k] || ""; }
+  function $(s, r) { return (r || document).querySelector(s); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function detect() {
+    var q = (location.search.match(/[?&]lang=(\w+)/) || [])[1];
+    if (q && T[q]) return q;
+    try { var s = localStorage.getItem("ez_lang"); if (s && T[s]) return s; } catch (e) {}
+    var n = (navigator.language || "en").toLowerCase();
+    if (n.indexOf("zh") === 0) return "zh";
+    if (n.indexOf("in") === 0) return "id";
+    var b = n.slice(0, 2);
+    return T[b] ? b : "en";
+  }
+
+  /* ---------- shared chrome ---------- */
+  var page = document.body.dataset.page;
+  var NAV = [["index.html", "home", "nav_home", I.home], ["guide.html", "guide", "nav_guide", I.steps], ["devices.html", "dev", "nav_dev", I.phone], ["usage.html", "use", "nav_use", I.chart]];
+
+  function chrome() {
+    var h = '<div class="wrap"><a class="logo" href="index.html"><img src="assets/img/logo-color.png" alt="ez eSIM"></a><nav class="dnav" aria-label="Main">';
+    NAV.forEach(function (n) { h += '<a href="' + n[0] + '"' + (page === n[1] ? ' aria-current="page"' : "") + ' data-i18n="' + n[2] + '"></a>'; });
+    h += '</nav><div class="langwrap"><button class="langbtn" type="button" aria-haspopup="true" aria-expanded="false" id="langbtn" aria-label="Language">' + I.globe + '</button><ul class="langmenu" id="langmenu" role="menu" hidden>';
+    LANGS.forEach(function (l) { h += '<li role="none"><button role="menuitemradio" aria-checked="false" data-lang="' + l[0] + '">' + l[1] + "</button></li>"; });
+    h += '</ul></div><button class="burger" type="button" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navmenu"><i></i><i></i><i></i></button></div>';
+    h += '<nav class="navmenu" id="navmenu" aria-label="Menu" hidden><div class="wrap">';
+    NAV.forEach(function (n) { h += '<a href="' + n[0] + '"' + (page === n[1] ? ' aria-current="page"' : "") + ">" + n[3] + '<span data-i18n="' + n[2] + '"></span></a>'; });
+    h += '<div class="navcta"><a class="btn zalo" href="' + (cfg.zaloUrl || "#") + '">' + I.chat + '<span data-i18n="btn_support"></span></a><a class="btn ghost" href="' + (cfg.plansUrl || "#") + '" data-i18n="btn_plans"></a></div></div></nav>';
+    $("#hdr").innerHTML = h;
+
+    var tb = "";
+    NAV.forEach(function (n) { tb += '<a href="' + n[0] + '"' + (page === n[1] ? ' aria-current="page"' : "") + ">" + n[3] + '<span data-i18n="' + n[2] + '"></span></a>'; });
+    $("#tabbar").innerHTML = tb;
+
+    $("#ftr").innerHTML = '<div class="wrap"><img src="assets/img/logo-white.png" alt="ez eSIM"><span>© ' + new Date().getFullYear() + " ez eSIM</span></div>";
+
+    var hs = $("#help");
+    if (hs) hs.innerHTML = '<div class="help"><h2 data-i18n="help_t"></h2><a class="btn zalo" href="' + (cfg.zaloUrl || "#") + '" target="_blank" rel="noopener">' + I.chat + '<span data-i18n="btn_support"></span></a></div>';
+
+    var bg = $("#burger"), nm = $("#navmenu");
+    function navClose() { nm.hidden = true; bg.setAttribute("aria-expanded", "false"); bg.classList.remove("on"); }
+    bg.addEventListener("click", function (e) { e.stopPropagation(); var o = nm.hidden; nm.hidden = !o; bg.setAttribute("aria-expanded", o ? "true" : "false"); bg.classList.toggle("on", o); $("#langmenu").hidden = true; });
+    document.addEventListener("click", function (e) { if (!e.target.closest("#navmenu")) navClose(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") navClose(); });
+    var btn = $("#langbtn"), menu = $("#langmenu");
+    btn.addEventListener("click", function (e) { e.stopPropagation(); var open = menu.hidden; menu.hidden = !open; navClose(); btn.setAttribute("aria-expanded", open ? "true" : "false"); });
+    document.addEventListener("click", function () { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); } });
+    menu.addEventListener("click", function (e) { var b = e.target.closest("[data-lang]"); if (b) setLang(b.dataset.lang); });
+  }
+
+  function setLang(l) {
+    lang = l;
+    var meta = LANGS.filter(function (x) { return x[0] === l; })[0];
+    document.documentElement.lang = meta[2];
+    document.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t(el.dataset.i18n); });
+    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) { el.placeholder = t(el.dataset.i18nPh); });
+    document.querySelectorAll("#langmenu [data-lang]").forEach(function (b) { b.setAttribute("aria-checked", b.dataset.lang === l ? "true" : "false"); });
+    var tk = { guide: "guide_h1", dev: "dev_h1", use: "use_h1" }[page];
+    document.title = (tk ? t(tk) + " | " : "") + "ez eSIM";
+    try { localStorage.setItem("ez_lang", l); } catch (e) {}
+    hooks.forEach(function (f) { f(); });
+  }
+
+  /* ---------- lightbox (tap a real screenshot to enlarge) ---------- */
+  function lightbox(src) {
+    var lb = document.createElement("div");
+    lb.className = "lb"; lb.setAttribute("role", "dialog"); lb.setAttribute("aria-modal", "true");
+    lb.innerHTML = '<img src="' + src + '" alt="">';
+    function close() { lb.remove(); document.removeEventListener("keydown", key); }
+    function key(e) { if (e.key === "Escape") close(); }
+    lb.addEventListener("click", close); document.addEventListener("keydown", key);
+    document.body.appendChild(lb);
+  }
+
+  /* ---------- page: guide ---------- */
+  var STEPS = {
+    ios: [["img", "assets/setup/ios-1.webp"], ["img", "assets/setup/ios-2.webp"], ["img", "assets/setup/ios-3.webp"], ["img", "assets/setup/ios-4.webp"], ["img", "assets/setup/ios-5.webp"], ["img", "assets/setup/ios-6.webp"]],
+    android: [["img", "assets/setup/android-1.webp"], ["img", "assets/setup/android-2.webp"], ["img", "assets/setup/android-3.webp"], ["img", "assets/setup/android-4.webp"], ["img", "assets/setup/android-5.webp"], ["img", "assets/setup/android-6.webp"]]
+  };
+  var HINTS = { ios: { 3: "keep_open", 6: "r_h" }, android: { 3: "keep_open", 6: "r_h" } };
+  function guide() {
+    var os = /android/i.test(navigator.userAgent) ? "android" : "ios";
+    if (location.hash === "#android") os = "android"; else if (location.hash === "#ios") os = "ios";
+    var list = $("#steps"), seg = $("#seg");
+    function render() {
+      var pre = os === "ios" ? "i" : "a", h = "";
+      STEPS[os].forEach(function (s, i) {
+        var n = i + 1, hk = HINTS[os][n];
+        var real = s[0] === "img", ttl = esc(t(pre + n));
+        h += '<li class="slide' + (real ? " real" : "") + '"><div class="top"><span class="n">' + n + "</span><div><h3>" + ttl + "</h3>" +
+          (hk ? '<p class="hint' + (hk === "r_h" ? " warn" : "") + '">' + esc(t(hk)) + "</p>" : "") +
+          '</div></div><div class="ph">' + (real ? '<button type="button" class="zoom" data-src="' + s[1] + '" aria-label="' + ttl + '"><img src="' + s[1] + '" alt="" loading="lazy"></button>' : phone(s[0], s[1])) + "</div></li>";
+      });
+      list.innerHTML = h; list.classList.add("car"); list.scrollLeft = 0; buildNav();
+      seg.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.os === os ? "true" : "false"); });
+    }
+    var nav = document.createElement("div"); nav.className = "carnav"; nav.id = "carnav"; list.parentNode.insertBefore(nav, list.nextSibling);
+    var cur = 0;
+    function slides() { return list.querySelectorAll(".slide"); }
+    function go(i) { var sl = slides(); i = Math.max(0, Math.min(sl.length - 1, i)); list.scrollTo({ left: sl[i].offsetLeft - (list.clientWidth - sl[i].offsetWidth) / 2, behavior: "smooth" }); }
+    function mark(i) {
+      cur = i; var ds = nav.querySelectorAll(".dot");
+      ds.forEach(function (x, k) { x.classList.toggle("on", k === i); });
+      nav.querySelector(".prev").disabled = i === 0; nav.querySelector(".next").disabled = i === ds.length - 1;
+      nav.querySelector(".cnt").textContent = (i + 1) + " / " + ds.length;
+    }
+    function buildNav() {
+      var n = slides().length, h = '<button type="button" class="prev" aria-label="Previous">' + I.chev + '</button><div class="dots">';
+      for (var k = 0; k < n; k++) h += '<button type="button" class="dot" data-i="' + k + '" aria-label="' + (k + 1) + '"></button>';
+      nav.innerHTML = h + '</div><span class="cnt"></span><button type="button" class="next" aria-label="Next">' + I.chev + "</button>"; mark(0);
+    }
+    nav.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      if (b.classList.contains("prev")) go(cur - 1); else if (b.classList.contains("next")) go(cur + 1); else if (b.dataset.i) go(+b.dataset.i);
+    });
+    var tick;
+    list.addEventListener("scroll", function () {
+      clearTimeout(tick); tick = setTimeout(function () {
+        var sl = slides(), c = list.scrollLeft + list.clientWidth / 2, best = 0, bd = 1e9;
+        sl.forEach(function (x, k) { var dd = Math.abs(x.offsetLeft + x.offsetWidth / 2 - c); if (dd < bd) { bd = dd; best = k; } });
+        mark(best);
+      }, 40);
+    });
+    list.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") go(cur + 1); else if (e.key === "ArrowLeft") go(cur - 1); });
+    list.tabIndex = 0;
+    list.addEventListener("click", function (e) {
+      var z = e.target.closest(".zoom"); if (z) lightbox(z.dataset.src);
+    });
+    seg.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-os]"); if (!b) return;
+      os = b.dataset.os; try { history.replaceState(null, "", "#" + os); } catch (x) {}
+      render();
+    });
+    $("#done").innerHTML = I.check + "<div><b>" + "</b><span></span></div>";
+    function doneText() { var d = $("#done div"); d.innerHTML = "<b>" + esc(t("done_t")) + "</b><span>" + esc(t("done_s")) + "</span>"; }
+    hooks.push(render, doneText);
+  }
+
+  /* ---------- page: devices ---------- */
+  var DEV = [
+    ["Apple", [["iPhone 17 / 17 Pro", ["iphone17"]], ["iPhone 16 / 16 Pro", ["iphone16"]], ["iPhone 15", ["iphone15"]], ["iPhone 14", ["iphone14"]], ["iPhone 13", ["iphone13"]], ["iPhone SE (3rd gen)", ["iphonese3", "iphonese"]], ["iPad Pro / Air", ["ipadpro", "ipadair"]]]],
+    ["Samsung", [["Galaxy S25", ["galaxys25"]], ["Galaxy S24", ["galaxys24"]], ["Galaxy Z Fold", ["galaxyzfold", "zfold"]], ["Galaxy Z Flip", ["galaxyzflip", "zflip"]]]],
+    ["Google", [["Pixel 9", ["pixel9"]], ["Pixel 8", ["pixel8"]], ["Pixel 7", ["pixel7"]], ["Pixel Fold", ["pixelfold"]]]],
+    ["other", [["Sony Xperia 1", ["xperia1"]], ["Sony Xperia 10", ["xperia10"]]]]
+  ];
+  function norm(s) { return s.toLowerCase().replace(/[\s\-_/()]/g, ""); }
+  function devices() {
+    var box = $("#groups"), inp = $("#q"), v = $("#verdict");
+    function render() {
+      var q = norm(inp.value), any = false, h = "";
+      DEV.forEach(function (g) {
+        h += '<section class="grp"><h2>' + esc(g[0] === "other" ? t("dev_other") : g[0]) + '</h2><ul class="chips">';
+        g[1].forEach(function (d) {
+          var hit = q.length > 1 && d[1].some(function (k) { return k.indexOf(q) > -1 || (q.indexOf(k) > -1); });
+          if (hit) any = true;
+          h += '<li class="' + (q.length > 1 ? (hit ? "hit" : "dim") : "") + '">' + esc(d[0]) + "</li>";
+        });
+        h += "</ul></section>";
+      });
+      box.innerHTML = h;
+      if (q.length > 1) {
+        v.className = "verdict " + (any ? "ok" : "no");
+        v.innerHTML = (any ? I.check : I.info) + "<span>" + esc(any ? t("dev_ok") : t("dev_no")) + "</span>";
+      } else { v.className = "verdict"; v.innerHTML = ""; }
+    }
+    inp.addEventListener("input", render);
+    hooks.push(render);
+  }
+
+  /* ---------- page: usage ---------- */
+  var USE = {
+    ios: { path: ["Settings", "Cellular", "Current Period"], imgs: ["assets/usage/ios-1.webp", "assets/usage/ios-2.webp", "assets/usage/ios-3.webp"] },
+    samsung: { path: ["Settings", "Connections", "Data usage", "Mobile data usage"], imgs: ["assets/usage/samsung-1.webp", "assets/usage/samsung-2.webp", "assets/usage/samsung-3.webp"] }
+  };
+  function usage() {
+    var os = /android/i.test(navigator.userAgent) ? "samsung" : "ios", seg = $("#seg");
+    function render() {
+      var u = USE[os], p = "";
+      u.path.forEach(function (s, i) { p += (i ? '<li class="sep" aria-hidden="true">›</li>' : "") + '<li class="' + (i === u.path.length - 1 ? "last" : "") + '">' + esc(s) + "</li>"; });
+      $("#path").innerHTML = p;
+      $("#strip").innerHTML = u.imgs.map(function (f) { return '<img src="' + (/\.\w+$/.test(f) ? f : (cfg.usageImgBase || "") + f + ".webp") + '" alt="" loading="lazy">'; }).join("");
+      seg.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.os === os ? "true" : "false"); });
+    }
+    seg.addEventListener("click", function (e) { var b = e.target.closest("[data-os]"); if (b) { os = b.dataset.os; render(); } });
+    hooks.push(render);
+  }
+
+  /* ---------- boot ---------- */
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("[data-icon]").forEach(function (el) { el.innerHTML = I[el.dataset.icon] || ""; });
+    chrome();
+    if (page === "guide") guide();
+    if (page === "dev") devices();
+    if (page === "use") usage();
+    setLang(detect());
+  });
+})();
